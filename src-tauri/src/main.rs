@@ -105,10 +105,7 @@ fn render_markdown(
                     }
                 }
 
-                e => {
-                    println!("in event {:?}", &e);
-                    event
-                }
+                e => event,
             })
             .filter(|event| match event {
                 Event::Start(CodeBlock(_))
