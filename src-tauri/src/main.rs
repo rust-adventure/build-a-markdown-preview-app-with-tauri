@@ -8,14 +8,10 @@ use pulldown_cmark::{
     Tag::CodeBlock,
 };
 use serde::Deserialize;
-use syntect::highlighting::{Style, ThemeSet};
+use syntect::highlighting::ThemeSet;
 use syntect::parsing::SyntaxSet;
-use syntect::util::{
-    as_24_bit_terminal_escaped, LinesWithEndings,
-};
-use syntect::{
-    easy::HighlightLines, html::highlighted_html_for_string,
-};
+
+use syntect::html::highlighted_html_for_string;
 
 use once_cell::sync::OnceCell;
 
@@ -102,7 +98,6 @@ fn render_markdown(
                                 &TS.get().unwrap().themes
                                     ["Solarized (light)"],
                             );
-                        dbg!(&result);
                         current_code = None;
                         Event::Html(result.into())
                     } else {
